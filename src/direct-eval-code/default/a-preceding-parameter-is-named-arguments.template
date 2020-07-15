@@ -1,0 +1,18 @@
+// Copyright (C) 2020 Rick Waldron, André Bargull. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+
+/*---
+path: language/eval-code/direct/a-preceding-parameter-is-named-arguments-
+name: Declare |arguments| when a preceding parameter is named |arguments|.
+esid: sec-evaldeclarationinstantiation
+---*/
+
+
+assert.sameValue("arguments" in this, false, "No global 'arguments' binding at beginning");
+
+function f(arguments, p = /*{ eval-code }*/) {
+  /*{ body }*/
+}
+assert.throws(SyntaxError, f);
+
+assert.sameValue("arguments" in this, false, "No global 'arguments' binding at end");

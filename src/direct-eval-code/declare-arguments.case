@@ -1,0 +1,13 @@
+// Copyright (C) 2020 Rick Waldron, André Bargull. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+desc: Declare "arguments" and assign to it in direct eval code
+template: default
+---*/
+
+//- fn-def-param-begin
+function f(
+//- fn-def-param-end-body-begin
+) {
+//- eval-code
+eval("var arguments")

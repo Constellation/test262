@@ -1,0 +1,19 @@
+// Copyright (C) 2020 Rick Waldron, André Bargull. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+
+/*---
+path: language/eval-code/direct/the-function-body-contains-an-arguments-function-declaration-
+name: Declare |arguments| when the function body contains an |arguments| function declaration.
+esid: sec-evaldeclarationinstantiation
+---*/
+
+assert.sameValue("arguments" in this, false, "No global 'arguments' binding at beginning");
+
+function f(p = /*{ eval-code }*/) {
+  function arguments() {}
+  /*{ body }*/
+}
+assert.throws(SyntaxError, f);
+
+
+assert.sameValue("arguments" in this, false, "No global 'arguments' binding at end");
