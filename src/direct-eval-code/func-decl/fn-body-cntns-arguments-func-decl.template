@@ -2,18 +2,18 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-path: language/eval-code/direct/the-function-body-contains-an-arguments-function-declaration-
+path: language/eval-code/direct/func-decl-fn-body-cntns-arguments-func-decl-
 name: Declare |arguments| when the function body contains an |arguments| function declaration.
 esid: sec-evaldeclarationinstantiation
+flags: [noStrict]
 ---*/
 
-assert.sameValue("arguments" in this, false, "No global 'arguments' binding at beginning");
+assert.sameValue("arguments" in this, false, "No global 'arguments' binding");
 
-function f(p = /*{ eval-code }*/) {
+function f(p = /*{ parameter-code }*/) {
   function arguments() {}
-  /*{ body }*/
 }
 assert.throws(SyntaxError, f);
 
 
-assert.sameValue("arguments" in this, false, "No global 'arguments' binding at end");
+assert.sameValue("arguments" in this, false, "No global 'arguments' binding");

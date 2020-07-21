@@ -2,12 +2,8 @@
 // This code is governed by the BSD license found in the LICENSE file.
 /*---
 desc: Declare "arguments" and assign to it in direct eval code
-template: default
+template: arrow-func
 ---*/
 
-//- fn-def-param-begin
-function f(
-//- fn-def-param-end-body-begin
-) {
-//- eval-code
-eval("var arguments")
+//- parameter-code
+eval("var arguments = 'param'")
